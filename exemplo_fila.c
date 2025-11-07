@@ -58,3 +58,30 @@ Pessoa espiar(const Fila *f) {
         return vazio;     // Impede acesso indevido
     return f->itens[f->inicio];         // Retorna o Pessoa da frente
 }
+
+int main(int argc, char const *argv[])
+{
+    Fila f;
+    inicializar(&f); // Inicializa a Fila
+    // Abaixo eu crio algumas pessoas para colocar na Fila
+    Pessoa p1 = {"João", 25};
+    Pessoa p2 = {"Maria", 30};
+    Pessoa p3 = {"Carlos", 22};
+    Pessoa p4 = {"Ana", 28};
+    Pessoa p5 = {"Pedro", 35};
+
+    inserir(&f, p1);
+    inserir(&f, p2);
+    inserir(&f, p3);
+    inserir(&f, p4);
+    inserir(&f, p5); // Concluída a inserção de 5 pessoas na fila
+
+    mostrarFila(&f);
+
+    Pessoa retirado = retirar(&f);
+    printf("\nRetirado da fila: Nome: %s, Idade: %d\n", retirado.nome, retirado.idade);
+
+    mostrarFila(&f);
+
+    return 0;
+}
