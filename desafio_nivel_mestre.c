@@ -335,7 +335,7 @@ int main(int argc, char const *argv[])
             break;
         
         Peca peca_removida;
-        int sucesso = 0; // Flag para rastrear se uma peça foi removida ou enviada/usada.
+        int sucesso = 0; // Flag de sucesso para rastrear se uma peça foi removida ou enviada/usada.
 
         if (opcao == 1) // 1 - Jogar peça da frente da fila
         {
