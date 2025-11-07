@@ -23,8 +23,8 @@ Elemento retirar(Fila *f) {
     f->total--;                          // Diminui o total
     return e;                            // Retorna o item removido
 }
-
-Elemento espiar(Fila *f) {
+ 
+Elemento espiar(const Fila *f) {
     Elemento vazio = {-1};              // Valor padrão se a fila estiver vazia
     if (filaVazia(f))
         return vazio;     // Impede acesso indevido
