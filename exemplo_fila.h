@@ -2,7 +2,7 @@
 #define EXEMPLO_FILA_H
 #include <stdbool.h>
 
-#define MAX 100
+#define MAX 5
 
 typedef struct {
     int idade;
