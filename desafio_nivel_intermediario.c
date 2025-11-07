@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define MAX_FILA 5
 #define MAX_PILHA 3
@@ -86,6 +87,7 @@ void mostrarPilha(const PilhaPecas *p)
     printf("Pilha de Reserva (Topo --> Base):\n");
     for (int i = p->topo; i >= 0; i--)
     {
+        printf("\n\n --- MOSTRANDO PILHA --- \n\n");
         printf("[%s %d]\n", p->itens[i].nome, p->itens[i].id_exclusivo);
     }
 }
@@ -172,10 +174,12 @@ void mostrarFila(const FilaPecas *f)
     for (int i = 0; i < f->total; i++)
     {
         int index = (f->inicio + i) % MAX_FILA;
+        printf("\n\n --- MOSTRANDO FILA --- \n\n");
         printf("Peca %d: Nome: %s, ID Exclusivo: %d\n", i + 1, f->itens[index].nome, f->itens[index].id_exclusivo);
     }
 }
 
+/*** 
 Peca gerarPeca(FilaPecas *f)
 {
     Peca p;
@@ -196,6 +200,24 @@ Peca gerarPeca(FilaPecas *f)
     p.nome[0] = opcoes[rand() % 4];
     p.nome[1] = '\0';
     p.id_exclusivo = maior_id + 1;
+
+    return p;
+} */
+
+Peca gerarPeca() // Não precisa mais do parâmetro FilaPecas *f
+{
+    // Variável estática para manter o último ID gerado, independentemente das chamadas
+    static int ultimo_id = 8; // Começa de 8, já que 0-7 foram usados
+    Peca p;
+    char opcoes[] = {'I', 'O', 'T', 'L'};
+
+    // Escolhe aleatoriamente uma letra das opções
+    p.nome[0] = opcoes[rand() % 4];
+    p.nome[1] = '\0'; // Garantindo o terminador nulo!
+
+    // Incrementa e atribui o ID
+    ultimo_id++;
+    p.id_exclusivo = ultimo_id;
 
     return p;
 }
@@ -230,6 +252,8 @@ void inicializarJogo(FilaPecas *f, PilhaPecas *p)
 
 int main(int argc, char const *argv[])
 {
+    srand(time(NULL)); // Inicializa a semente para números aleatórios
+
     FilaPecas f;
     PilhaPecas p;
 
@@ -249,13 +273,16 @@ int main(int argc, char const *argv[])
         }
         else if (opcao == 2)
         {
-            if (pilhaCheia(&f))
+            if (pilhaCheia(&p))
             {
                 printf("\nPilha cheia! Nao e possivel inserir.\n");
             }
             else
             {
+                // 1. Move a peça da Fila para a Pilha
                 jogarPecaParaPilha(&f, &p);
+                // 2. CORRIGIDO: Gera e insere uma nova peça na Fila
+                inserir(&f, gerarPeca(&f));
             }
         }
         else if (opcao == 3)
