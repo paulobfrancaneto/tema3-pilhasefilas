@@ -31,12 +31,25 @@ void inserir(Fila *f, Pessoa e) {
 
 Pessoa retirar(Fila *f) {
     Pessoa vazio = {-1};               // Valor padrão caso a fila esteja vazia
-    if (filaVazia(f)) 
+    if (filaVazia(f))
+        printf("\nFila vazia! Nao e possivel retirar.\n"); // Imprime nos casos que a Fila está vazia 
         return vazio;      // Evita remoção se estiver vazia
     Pessoa e = f->itens[f->inicio];    // Armazena o item a ser removido
     f->inicio = (f->inicio + 1) % MAX;   // Atualiza o índice de início
     f->total--;                          // Diminui o total
     return e;                            // Retorna o item removido
+}
+
+void mostrarFila(const Fila *f) {
+    if (filaVazia(f)) {
+        printf("Fila vazia!\n");
+        return;
+    }
+    printf("Conteudo da fila:\n");
+    for (int i = 0; i < f->total; i++) {
+        int index = (f->inicio + i) % MAX;
+        printf("Pessoa %d: Nome: %s, Idade: %d\n", i + 1, f->itens[index].nome, f->itens[index].idade);
+    }
 }
  
 Pessoa espiar(const Fila *f) {

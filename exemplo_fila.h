@@ -20,12 +20,13 @@ typedef struct {
 void inicializar(Fila *f);
 
 /* Consultas */
-bool filaCheia(const Fila *f);
-bool filaVazia(const Fila *f);
+int filaCheia(const Fila *f);
+int filaVazia(const Fila *f);
 
 /* Operações */
 void inserir(Fila *f, Pessoa e);
 Pessoa retirar(Fila *f);
 Pessoa espiar(const Fila *f);
+void mostrarFila(const Fila *f);
 
 #endif /* EXEMPLO_FILA_H */
