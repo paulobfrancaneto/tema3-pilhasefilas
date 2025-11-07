@@ -16,9 +16,10 @@ int filaVazia(const Fila *f) {
 }
 
 void inserir(Fila *f, Pessoa e) {
-    if (filaCheia(f)) // Impede inserção se estiver cheia
+    if (filaCheia(f)) { // Impede inserção se estiver cheia
         printf("\nFila cheia! Nao e possivel inserir.\n");
         return;
+    }
     f->itens[f->fim] = e;            // Insere no final
     f->fim = (f->fim + 1) % MAX;     // Atualiza circularmente o índice
     f->total++;                      // Incrementa a contagem de Pessoas
@@ -26,9 +27,10 @@ void inserir(Fila *f, Pessoa e) {
 
 Pessoa retirar(Fila *f) {
     Pessoa vazio = {-1};               // Valor padrão caso a fila esteja vazia
-    if (filaVazia(f))
+    if (filaVazia(f)){
         printf("\nFila vazia! Nao e possivel retirar.\n"); // Imprime nos casos que a Fila está vazia 
         return vazio;      // Evita remoção se estiver vazia
+    }
     Pessoa e = f->itens[f->inicio];    // Armazena o item a ser removido
     f->inicio = (f->inicio + 1) % MAX;   // Atualiza o índice de início
     f->total--;                          // Diminui o total
@@ -59,17 +61,11 @@ int main(int argc, char const *argv[])
     Fila f;
     inicializar(&f); // Inicializa a Fila
     // Abaixo eu crio algumas pessoas para colocar na Fila
-    Pessoa p1 = {"João", 25};
+    Pessoa p1 = {"Joao", 25};
     Pessoa p2 = {"Maria", 30};
-    Pessoa p3 = {"Carlos", 22};
-    Pessoa p4 = {"Ana", 28};
-    Pessoa p5 = {"Pedro", 35};
 
     inserir(&f, p1);
-    inserir(&f, p2);
-    inserir(&f, p3);
-    inserir(&f, p4);
-    inserir(&f, p5); // Concluída a inserção de 5 pessoas na fila
+    inserir(&f, p2); // Concluída a inserção de 2 pessoas na fila
 
     mostrarFila(&f);
 
