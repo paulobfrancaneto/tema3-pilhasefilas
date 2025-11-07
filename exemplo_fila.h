@@ -5,8 +5,8 @@
 #define MAX 5
 
 typedef struct Pessoa {
-    int idade;
     char nome[30];
+    int idade;
 } Pessoa;
 
 typedef struct {
