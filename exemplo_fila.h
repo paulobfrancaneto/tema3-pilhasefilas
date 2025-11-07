@@ -4,7 +4,7 @@
 
 #define MAX 5
 
-typedef struct {
+typedef struct Pessoa {
     int idade;
     char nome[30];
 } Pessoa;

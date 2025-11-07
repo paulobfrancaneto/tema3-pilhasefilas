@@ -1,8 +1,3 @@
-typedef struct {
-    int valor;
-    char nome[30];
-} Pessoa;
-
 #include<stdio.h>
 #include "exemplo_fila.h"
 
