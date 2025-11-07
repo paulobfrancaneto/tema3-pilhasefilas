@@ -63,13 +63,24 @@ int main(int argc, char const *argv[])
     // Abaixo eu crio algumas pessoas para colocar na Fila
     Pessoa p1 = {"Joao", 25};
     Pessoa p2 = {"Maria", 30};
+    Pessoa p3 = {"Carlos", 28};
+    Pessoa p4 = {"Ana", 22};
+    Pessoa p5 = {"Beatriz", 27};
 
     inserir(&f, p1);
-    inserir(&f, p2); // Concluída a inserção de 2 pessoas na fila
+    inserir(&f, p2);
+    inserir(&f, p3);
+    inserir(&f, p4);
+    inserir(&f, p5); // Concluída a inserção de 2 pessoas na fila
 
     mostrarFila(&f);
 
     Pessoa retirado = retirar(&f);
+    printf("\nRetirado da fila: Nome: %s, Idade: %d\n", retirado.nome, retirado.idade);
+
+    mostrarFila(&f);
+
+    retirado = retirar(&f);
     printf("\nRetirado da fila: Nome: %s, Idade: %d\n", retirado.nome, retirado.idade);
 
     mostrarFila(&f);
