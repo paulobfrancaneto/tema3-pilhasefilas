@@ -89,10 +89,12 @@ int main(int argc, char const *argv[])
         Pessoa p = remover(&filaOriginal);
         push(&auxiliar, p);
     }
+    
     while (auxiliar.topo != -1) {
         Pessoa p = pop(&auxiliar);
         inserir(&filaInvertida, p);
     }
+    
     printf("\nFila Invertida:\n");
     exibirFila(filaInvertida);
 
