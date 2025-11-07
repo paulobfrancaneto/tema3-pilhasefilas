@@ -1,17 +1,16 @@
 #ifndef EXEMPLO_FILA_H
 #define EXEMPLO_FILA_H
-
 #include <stdbool.h>
 
 #define MAX 100
 
 typedef struct {
-    int valor;
+    int idade;
     char nome[30];
-} Elemento;
+} Pessoa;
 
 typedef struct {
-    Elemento itens[MAX];
+    Pessoa itens[MAX];
     int inicio;
     int fim;
     int total;
@@ -25,8 +24,8 @@ bool filaCheia(const Fila *f);
 bool filaVazia(const Fila *f);
 
 /* Operações */
-void inserir(Fila *f, Elemento e);
-Elemento retirar(Fila *f);
-Elemento espiar(const Fila *f);
+void inserir(Fila *f, Pessoa e);
+Pessoa retirar(Fila *f);
+Pessoa espiar(const Fila *f);
 
 #endif /* EXEMPLO_FILA_H */
