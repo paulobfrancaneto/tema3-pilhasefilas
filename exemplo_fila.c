@@ -4,6 +4,7 @@ typedef struct {
 } Elemento;
 
 #include<stdio.h>
+#include "exemplo_fila.h"
 
 void inserir(Fila *f, Elemento e) {
     if (filaCheia(f)) // Impede inserção se estiver cheia
@@ -29,5 +30,3 @@ Elemento espiar(Fila *f) {
         return vazio;     // Impede acesso indevido
     return f->itens[f->inicio];         // Retorna o elemento da frente
 }
-
-#include "exemplo_fila.h"
